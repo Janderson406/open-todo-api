@@ -5,10 +5,10 @@ Rails.application.routes.draw do
     end
 
     resources :lists, only: [] do
-      resources :items, only: [:create]
+      resources :items, only: [:create, :update]
     end
 
-    resources :items, only: [:destroy]
+    resources :items, only: [:destroy, :update]
   end
 end
 # namespace separates the API routes from the rest of the application routes.
