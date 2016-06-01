@@ -3,5 +3,5 @@ class List < ActiveRecord::Base
   has_many :items
 
   enum permissions [:private, :viewable, open]
-  
+  validates :permissions, inclusion: { in: %w(private viewable open), message: '%{value} is not valid.'}
 end
