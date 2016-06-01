@@ -16,4 +16,17 @@ RSpec.describe Api::UsersController, type: :controller do
       expect(response.content_type).to eq("application/json")
     end
   end
+
+  describe "DELETE destroy" do
+    before do
+      @user = create(:user)
+    end
+
+    it "deletes a User with authentication" do
+      allow(controller).to receive(:authenticated?)
+      delete :destroy, id: @user.id
+      expect(response).to have_http_status(204)
+      expect(response.content_type).to eq("application/json")
+    end
+  end
 end
