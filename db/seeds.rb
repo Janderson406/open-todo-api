@@ -12,6 +12,7 @@ users = User.all
 10.times do
   list = List.new(
     name: Faker::Hacker.verb,
+    permissions: 'open',
     user: users.sample
   )
   list.save!
@@ -21,6 +22,7 @@ lists = List.all
 20.times do
   item = Item.new(
     description: Faker::Hacker.say_something_smart,
+    completed: false,
     list: lists.sample
   )
   item.save
