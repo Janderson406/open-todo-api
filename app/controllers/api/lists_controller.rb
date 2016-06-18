@@ -1,9 +1,10 @@
 class Api::ListsController < ApiController
   before_action :authenticated?
+  before_action :authorize_user, except: [:index, :create]
 
   def index
     lists = List.all
-    render json: lists, each_serializer: ListSerializer    
+    render json: lists, each_serializer: ListSerializer
   end
 
   def create
